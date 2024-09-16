@@ -8,28 +8,24 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestMaxSubArray(t *testing.T) {
+func TestPartitionLabels(t *testing.T) {
 	tests := []struct {
-		nums []int
-		want int
+		s    string
+		want []int
 	}{
 		{
-			nums: []int{-2, 1, -3, 4, -1, 2, 1, -5, 4},
-			want: 6,
+			s:    "ababcbacadefegdehijhklij",
+			want: []int{9, 7, 8},
 		},
 		{
-			nums: []int{1},
-			want: 1,
-		},
-		{
-			nums: []int{5, 4, -1, 7, 8},
-			want: 23,
+			s:    "eccbbbbdec",
+			want: []int{10},
 		},
 	}
 
 	for i, test := range tests {
 		t.Run(fmt.Sprintf("Case %d", i+1), func(t *testing.T) {
-			got := greedy.MaxSubArray(test.nums)
+			got := greedy.PartitionLabels(test.s)
 			assert.Equal(t, test.want, got)
 		})
 	}
